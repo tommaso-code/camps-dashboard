@@ -37,7 +37,8 @@
   .sub{color:var(--text-muted);font-size:13.5px;margin-bottom:20px}
   .grid{display:grid;gap:16px}
   .g2{grid-template-columns:1fr 1fr}
-  @media(max-width:820px){.g2{grid-template-columns:1fr}}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
   .card{background:var(--bg-surface);border:1px solid var(--border);border-radius:13px;padding:18px 20px}
   .card.elev{background:var(--bg-elevated)}
   .card.you{border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.05)}
@@ -61,6 +62,9 @@
   .p-mid{background:rgba(245,158,11,.16);color:#fbbf24}
   .p-budget{background:rgba(96,165,250,.16);color:#93c5fd}
   .p-you{background:rgba(16,185,129,.16);color:#34d399}
+  .p-exp{background:rgba(52,211,153,.16);color:#6ee7b7}
+  .p-brand{background:rgba(244,63,94,.16);color:#fda4af}
+  .p-method{background:rgba(167,139,250,.16);color:#c4b5fd}
   .p-neu{background:var(--bg-hover);color:var(--text-secondary)}
   .callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:13px 16px;border-radius:0 10px 10px 0;font-size:14px;color:var(--text-secondary);margin:4px 0 20px}
   .callout.warn{border-color:var(--they);background:rgba(239,68,68,.09)}
@@ -77,6 +81,7 @@
   .scrollhint{font-size:12px;color:var(--text-muted);margin-bottom:8px}
   .eventname{font-size:15px;font-weight:700;margin-bottom:2px}
   .eventmeta{font-size:12px;color:var(--text-muted);margin-bottom:10px}
+  .yes{color:#34d399;font-weight:700} .no{color:#6b7280} .part{color:#fbbf24}
 </style>
 </head>
 <body>
@@ -84,13 +89,14 @@
   <header class="top">
     <div class="eyebrow">International Camps · Competitive Dashboard</div>
     <h1>International Soccer Camps — IDA vs. the Field</h1>
-    <p class="meta">Generated <strong>July 2, 2026</strong> · Anchor: <strong>IDA camps</strong> · Benchmarked against <strong>Barça Academy · Real Madrid Foundation · Kaptiva · SIA · Marcet · Ertheo/Atlético · AC Milan · Nike (US) · IMG</strong> · All prices per week, 2026 published rates unless flagged</p>
+    <p class="meta">Generated <strong>July 2, 2026</strong> · Anchor: <strong>IDA camps</strong> · 15 camps benchmarked: <strong>Barça · Real Madrid · Kaptiva · SIA · Marcet · Ertheo/Atlético · AC Milan · Tovo · Eture · Man City · Nike/Liverpool (UK) · FCV (UK) · Nike (US) · IMG</strong> · Per-week 2026 published rates unless flagged</p>
   </header>
 
   <nav class="tabs" id="tabs">
     <button class="tab active" data-tab="landscape">Camp Landscape</button>
     <button class="tab you" data-tab="ida">IDA Camps</button>
     <button class="tab" data-tab="competitors">Competitor Camps</button>
+    <button class="tab" data-tab="deliverables">Deliverables</button>
     <button class="tab" data-tab="pricing">Pricing</button>
     <button class="tab" data-tab="strategy">Strategic Takeaways</button>
   </nav>
@@ -98,36 +104,41 @@
   <!-- ===================== LANDSCAPE ===================== -->
   <section id="landscape" class="tab-content active">
     <h2>The Camp Landscape at a Glance</h2>
-    <p class="sub">Short-term (1–2 wk) residential &amp; day camps. The pro-club "foundation" camps (Real Madrid, AC Milan, Barça non-flagship) are cheaper mass-participation experiences; the true premium is the flagship-venue product (Barça Barcelona/La Masia) and the US academy model (IMG). IDA sits at the top of the mid band.</p>
+    <p class="sub">Short-term (1–2 wk) residential &amp; day camps. Three archetypes: <strong>brand/experience</strong> camps (pro-club badge + facility), <strong>methodology</strong> camps (buy the coaching philosophy), and <strong>development + exposure</strong> camps (a real college/pro pathway). IDA sits at the top of the mid price band and lives in the development-plus-exposure lane.</p>
 
     <div class="legend">
       <span><span class="pill p-budget">Budget / day</span></span>
       <span><span class="pill p-mid">Mid residential</span></span>
       <span><span class="pill p-prem">Premium</span></span>
     </div>
-    <p class="scrollhint">↔ Scroll horizontally on mobile.</p>
+    <p class="scrollhint">↔ Scroll horizontally on mobile. UK prices in GBP (≈USD shown).</p>
 
     <div class="matrix-scroll">
       <table>
         <thead><tr><th>Camp</th><th>Location</th><th>Format</th><th>Ages</th><th>Price / week</th><th>Tier</th></tr></thead>
         <tbody>
+          <tr><th>IMG Academy</th><td>Bradenton, FL (US)</td><td>Boarding / Day</td><td>Youth–HS</td><td>~$4,349–$4,829</td><td><span class="pill p-prem">Premium</span></td></tr>
+          <tr><th>Barça Academy — Barcelona</th><td>Barcelona (ES)</td><td>Residential / Day</td><td>~8–17</td><td>€2,395 (La Masia €4,195 · day €1,895)</td><td><span class="pill p-prem">Premium</span></td></tr>
+          <tr><th>Nike / Liverpool FC (UK)</th><td>Repton School (UK)</td><td>Residential</td><td>9–13 (GK 12–17)</td><td>£2,295 (~$2,900)</td><td><span class="pill p-prem">Premium</span></td></tr>
+          <tr><th>Manchester City (UK)</th><td>Etihad Campus, Manchester</td><td>Residential</td><td>9–17</td><td>£2,199 (~$2,780)</td><td><span class="pill p-prem">Premium</span></td></tr>
+          <tr><th>Tovo Academy</th><td>Sitges, Barcelona (ES)</td><td>Residential</td><td>13–18</td><td>~$2,100–$2,250</td><td><span class="pill p-prem">Premium (method)</span></td></tr>
           <tr class="you"><th>IDA Prep Camps</th><td>Valencia (ES) · Daytona (US)</td><td>Residential</td><td>10–18 B&G</td><td><strong>$1,785 / €1,785</strong></td><td><span class="pill p-mid">Top of mid</span></td></tr>
-          <tr><th>SIA Academy</th><td>Enguera, Valencia (ES)</td><td>Residential (full board)</td><td>13–22 B&G</td><td>€995</td><td><span class="pill p-mid">Mid (value)</span></td></tr>
-          <tr><th>Real Madrid Foundation</th><td>Madrid (ES)</td><td>Residential</td><td>9–17 B&G</td><td>€1,250 (MAX €1,750)</td><td><span class="pill p-mid">Mid</span></td></tr>
-          <tr><th>Kaptiva Sports</th><td>Sant Cugat, Barcelona (ES)</td><td>Residential (full board)</td><td>11–17 boys</td><td>~€1,223–€1,495</td><td><span class="pill p-mid">Mid</span></td></tr>
-          <tr><th>Marcet</th><td>Barcelona (ES)</td><td>Residential</td><td>6–18</td><td>~$1,350 (dev tier)</td><td><span class="pill p-mid">Mid</span></td></tr>
-          <tr><th>AC Milan Junior Camp</th><td>Italy (Cortina, Lignano…)</td><td>Residential (hotel FB)</td><td>Youth B&G</td><td>€1,350–€1,510 (day €1,085–€1,230)</td><td><span class="pill p-mid">Mid</span></td></tr>
           <tr><th>Ertheo / Atlético Madrid</th><td>Palencia (ES)</td><td>Residential (full board)</td><td>13–19</td><td>from €1,625</td><td><span class="pill p-mid">Upper-mid</span></td></tr>
+          <tr><th>Eture ID Camp</th><td>Vinaròs / Valencia (ES)</td><td>Residential (2 wk)</td><td>~14–17</td><td>Not public (est. €1,500–€2,250)</td><td><span class="pill p-mid">Mid (exposure)</span></td></tr>
+          <tr><th>AC Milan Junior Camp</th><td>Italy (Cortina, Lignano…)</td><td>Residential (hotel FB)</td><td>Youth B&G</td><td>€1,350–€1,510 (day €1,085–€1,230)</td><td><span class="pill p-mid">Mid</span></td></tr>
+          <tr><th>Marcet</th><td>Barcelona (ES)</td><td>Residential</td><td>6–18</td><td>~$1,350 (dev tier)</td><td><span class="pill p-mid">Mid</span></td></tr>
           <tr><th>Barça Academy — non-BCN</th><td>Italy, France, etc.</td><td>Residential</td><td>~8–17</td><td>~€1,290</td><td><span class="pill p-mid">Mid</span></td></tr>
-          <tr><th>Barça Academy — Barcelona</th><td>Barcelona (ES)</td><td>Residential / Day</td><td>~8–17</td><td>€2,395 (Regular) · €4,195 (La Masia) · €1,895 (day)</td><td><span class="pill p-prem">Premium</span></td></tr>
-          <tr><th>IMG Academy</th><td>Bradenton, FL (US)</td><td>Boarding / Day</td><td>Youth–HS</td><td>~$4,349–$4,829 (day ~$3,849+)</td><td><span class="pill p-prem">Premium</span></td></tr>
+          <tr><th>Real Madrid Foundation</th><td>Madrid (ES)</td><td>Residential</td><td>9–17 B&G</td><td>€1,250 (MAX €1,750)</td><td><span class="pill p-mid">Mid</span></td></tr>
+          <tr><th>FCV Int'l Academy (UK)</th><td>Leicestershire (UK)</td><td>Residential (2-wk blocks)</td><td>14–19</td><td>~£1,250 (~$1,580)</td><td><span class="pill p-mid">Mid</span></td></tr>
+          <tr><th>Kaptiva Sports</th><td>Sant Cugat, Barcelona (ES)</td><td>Residential (full board)</td><td>11–17 boys</td><td>~€1,223–€1,495</td><td><span class="pill p-mid">Mid</span></td></tr>
+          <tr><th>SIA Academy</th><td>Enguera, Valencia (ES)</td><td>Residential (full board)</td><td>13–22 B&G</td><td>€995</td><td><span class="pill p-mid">Mid (value)</span></td></tr>
           <tr><th>Nike Soccer Camps (US)</th><td>US universities</td><td>Overnight / Day</td><td>Youth–HS</td><td>~$449–$919 overnight</td><td><span class="pill p-budget">US benchmark</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout"><strong>Quick read:</strong> IDA Prep at <strong>~$1,785/wk</strong> is priced at the <strong>top of the mid band</strong> — above Real Madrid Foundation (€1,250), SIA (€995), AC Milan (€1,350–1,510) and Kaptiva; roughly level with Real Madrid MAX (€1,750); and below Barça-Barcelona flagship (€2,395–4,195) and IMG ($4,349+). Its story isn't club-brand nostalgia — it's <strong>pro-academy immersion + a real college/pro pathway</strong>, all-inclusive.</div>
-    <p class="disclaimer">Prices are 2026 published per-week rates unless noted. IDA's other camps (Elite Performance, Player Experiences, GK, Guerreras) are quote-based; only Prep Camps publish a price. EUR/USD treated as ~parity per IDA's own "$1,785/€1,785" framing.</p>
+    <div class="callout"><strong>Quick read:</strong> IDA Prep at <strong>~$1,785/wk</strong> sits at the top of the mid band — below the premium brand/facility camps (IMG, Barça-Barcelona, Man City, Nike/Liverpool at ~£2,200–£2,300 ≈ $2,800–$2,900, and Tovo ~$2,100–2,250) and above the mid-market field (Real Madrid €1,250, SIA €995, AC Milan, Kaptiva, FCV ~£1,250). Its lane isn't the crest — it's <strong>development + a real college/pro pathway</strong>, where its closest rivals are <strong>Eture and FCV</strong>.</p></div>
+    <p class="disclaimer">Prices are 2026 published per-week rates unless noted. UK figures in GBP (≈USD at ~1.27). IDA non-Prep camps, Eture ID camp, and Tovo individual weeks are quote-based/estimated. EUR/USD treated as ~parity per IDA's own "$1,785/€1,785" framing.</p>
   </section>
 
   <!-- ===================== IDA ===================== -->
@@ -141,7 +152,7 @@
           <dt>Ages</dt><dd>10–18, boys &amp; girls</dd>
           <dt>Duration</dt><dd>1–4 weeks (Jun 21 – Jul 18)</dd>
           <dt>Price</dt><dd><strong>$1,785 / €1,785 per week</strong> (published)</dd>
-          <dt>Included</dt><dd>Accommodation + meals, 1–2 sessions/day, strength &amp; conditioning, language classes, cultural excursions, Nike kit, airport transfer</dd>
+          <dt>Delivers</dt><dd>Accommodation + meals, 1–2 sessions/day, strength &amp; conditioning, language classes, cultural excursions, Nike kit, airport transfer</dd>
         </dl>
         <div style="margin-top:10px"><span class="tag">All-inclusive</span><span class="tag">US + Europe</span><span class="tag">Published price</span></div>
       </div>
@@ -155,7 +166,7 @@
         <div style="margin-top:10px"><span class="tag">Multi-country</span><span class="tag">Elite / selective</span><span class="tag">Quote-only</span></div>
       </div>
     </div>
-    <div class="callout good" style="margin-top:16px"><strong>Positioning:</strong> IDA's camps bundle more into the headline price (meals, kit, transfers, excursions, language classes all in) than most independent operators, and — unlike the pro-club foundation camps — attach to a genuine <strong>development + college/pro placement pathway</strong> and a US↔Europe geography (Valencia + Daytona).</div>
+    <div class="callout good" style="margin-top:16px"><strong>Positioning:</strong> IDA's camps bundle more into the headline price (meals, kit, transfers, excursions, language classes all in) than most operators, and — unlike the pro-club "foundation" camps — attach to a genuine <strong>development + college/pro placement pathway</strong> across a US↔Europe geography (Valencia + Daytona). That places IDA in the same "development + exposure" lane as Eture/FCV, but with multi-country reach and an academy pipeline behind it.</div>
   </section>
 
   <!-- ===================== COMPETITORS ===================== -->
@@ -163,74 +174,134 @@
     <h2>Competitor Camps</h2>
     <p class="sub">Grouped by what they really sell.</p>
 
-    <h3 style="margin-top:6px">Pro-club brand camps</h3>
-    <div class="grid g2">
-      <div class="card"><div class="eventname">Barça Academy Camp <span class="pill p-prem">Premium (BCN)</span></div><div class="eventmeta">Barcelona + worldwide · FC Barcelona official</div>
-        <ul><li><strong>Barcelona:</strong> Regular €2,395/wk residential; <strong>La Masia pack €4,195</strong> (sleep at La Masia, 9 sessions there); Day €1,895. Non-Barcelona cities ~€1,290. Ages ~8–17. The brand's flagship-venue halo drives the premium.</li></ul></div>
-      <div class="card"><div class="eventname">Real Madrid Foundation <span class="pill p-mid">Mid</span></div><div class="eventmeta">Madrid · Fundación Real Madrid</div>
-        <ul><li><strong>Campus Experience €1,250/wk</strong> residential; MAX tier €1,750; Full-day €625; Half-day €395 (12% Madridista discount). Ages 9–17. A mass-participation "experience" camp, not elite selection — hence the accessible price.</li></ul></div>
-      <div class="card"><div class="eventname">AC Milan Junior Camp <span class="pill p-mid">Mid</span></div><div class="eventmeta">Italy (Cortina, Lignano…) · Sporteventi</div>
-        <ul><li><strong>€1,350–€1,510/wk</strong> residential (hotel full board, Puma/Milan kit); Day €1,085–€1,230. Youth B&G. Italian pro-club benchmark.</li></ul></div>
-      <div class="card"><div class="eventname">Ertheo / Atlético Madrid <span class="pill p-mid">Upper-mid</span></div><div class="eventmeta">Palencia, Spain · Ertheo-organized</div>
-        <ul><li><strong>From €1,625/wk</strong> residential full board, official Atlético UEFA/RFEF coaches, 18+ hrs/wk, 2 kits, report. Ertheo also organizes Barça HP, Valencia HP, and UK-club camps (mostly quote-gated).</li></ul></div>
+    <h3 style="margin-top:6px">UK camps</h3>
+    <div class="grid g3">
+      <div class="card"><div class="eventname">Manchester City <span class="pill p-brand">Brand</span></div><div class="eventmeta">Etihad Campus, Manchester · £2,199/wk</div>
+        <ul><li>In-house (never franchised); residential ages 9–17. <strong>15h coaching + 15h workshops/wk</strong> at the first-team site, Puma MCFC kit, full board, Etihad tour, certificate, dedicated welfare team, 50+ nationalities. Brand + experience; thin on recruiting exposure.</li></ul></div>
+      <div class="card"><div class="eventname">Nike / Liverpool FC <span class="pill p-brand">Brand</span></div><div class="eventmeta">Repton School (UK) · £2,295/wk</div>
+        <ul><li>US Sports Camps × LFC International Academy; residential ages 9–13 (GK 12–17). <strong>~24h coaching/wk</strong>, LFC curriculum + exclusive kit, full board on a boarding-school campus, Anfield tour, 24/7 welfare. Heavily marketed to US families; experience-led.</li></ul></div>
+      <div class="card"><div class="eventname">FCV Int'l Academy <span class="pill p-exp">Dev + exposure</span></div><div class="eventmeta">Leicestershire (UK) · ~£1,250/wk</div>
+        <ul><li>Independent international academy; residential 2-wk blocks, ages 14–19. UEFA coaching + ex-pros, <strong>match-analysis sessions</strong>, matches vs academies, S&C + physio, PL-stadium excursions, full board, 45+ nationalities. Real development + light pathway (trials/network).</li></ul></div>
     </div>
 
-    <h3 style="margin-top:20px">Independent high-performance camps (IDA's true peer set)</h3>
+    <h3 style="margin-top:20px">Methodology &amp; exposure specialists</h3>
     <div class="grid g2">
-      <div class="card"><div class="eventname">SIA Academy <span class="pill p-mid">Mid — value</span></div><div class="eventmeta">Enguera, Valencia · FC Porto method</div>
-        <ul><li><strong>€995/wk</strong> residential full board (drops with length: €2,090/2wk, €4,200/4wk). 16 UEFA-Pro sessions/wk, video/nutrition/psych, 5 meals/day, 2 kits, 24/7 tutors. A genuine <em>price outlier</em> — undercuts IDA by ~$800/wk.</li></ul></div>
-      <div class="card"><div class="eventname">Kaptiva Sports <span class="pill p-mid">Mid</span></div><div class="eventmeta">Sant Cugat, Barcelona</div>
-        <ul><li><strong>€2,990/2wk (~€1,495/wk)</strong>; €4,890/4wk (~€1,223/wk). Full board, 18 sessions/2wk, Camp Nou + PortAventura, transfers, laundry. (2026 sold out.)</li></ul></div>
-      <div class="card"><div class="eventname">Marcet <span class="pill p-mid">Mid</span></div><div class="eventmeta">Barcelona · Fundación Marcet</div>
-        <ul><li><strong>~$1,350/wk</strong> (youngest/Development tier via reseller). 30–35 hrs training, full staff, nutritionist menus. Tiered pricing rises with age/level.</li></ul></div>
-      <div class="card"><div class="eventname">IMG Academy &amp; Nike (US) <span class="pill p-prem">Premium / benchmark</span></div><div class="eventmeta">Florida (IMG) · US universities (Nike)</div>
-        <ul><li><strong>IMG ~$4,349–$4,829/wk</strong> boarding (day ~$3,849+) — the US premium anchor. <strong>Nike/US Sports Camps ~$449–$919/wk</strong> overnight — the US mass-market benchmark.</li></ul></div>
+      <div class="card"><div class="eventname">Tovo Academy <span class="pill p-method">Methodology</span></div><div class="eventmeta">Sitges, Barcelona · ~$2,100–$2,250/wk</div>
+        <ul><li>Founded by <strong>Todd Beane</strong> (14 yrs with Johan Cruyff; co-founded the Cruyff Institute). Cruyffian <strong>"TIC" methodology</strong> (Technique / Insight / Communication) + ex-La Masia coaches + TOVO Metrics assessment, full board, transfers, kit, certificate. You buy the <em>pedagogy</em>, not a badge — strong development, light on excursions/exposure.</li></ul></div>
+      <div class="card"><div class="eventname">Eture ID Summer Camp <span class="pill p-exp">Dev + exposure (strongest)</span></div><div class="eventmeta">Vinaròs / Valencia · price not public</div>
+        <ul><li>FIFA-licensed agency + top NCAA recruiter (600+ placements, 331 to D1). Residential 2 wk, ~14–17. Double sessions/day, <strong>Veo-recorded matches → recruiting reels</strong>, S&C + physio, Spanish classes, cultural excursions, transfers, full board — and direct access to agents/college scouts + a gap-year/NCAA pipeline. The clearest "recruiting funnel" camp.</li></ul></div>
     </div>
-    <div class="callout" style="margin-top:16px"><strong>Read:</strong> the pro-club "foundation" camps sell <em>brand experience</em> at mid prices; IMG/Barça-Barcelona sell <em>premium venue/facility</em>. IDA's real head-to-head is the independent HP operators (SIA, Kaptiva, Marcet) — where IDA prices <em>above</em> SIA/Kaptiva but bundles more and adds a placement pathway.</div>
+
+    <h3 style="margin-top:20px">Pro-club brand camps (foundation/experience)</h3>
+    <div class="grid g2">
+      <div class="card"><div class="eventname">Barça Academy Camp <span class="pill p-brand">Premium (BCN)</span></div><div class="eventmeta">Barcelona + worldwide</div>
+        <ul><li>Regular €2,395/wk; <strong>La Masia pack €4,195</strong>; Day €1,895; non-BCN cities ~€1,290. 9 sessions/wk, kit, transfers. Flagship-venue halo drives the premium.</li></ul></div>
+      <div class="card"><div class="eventname">Real Madrid Foundation <span class="pill p-mid">Mid</span></div><div class="eventmeta">Madrid</div>
+        <ul><li>Campus Experience €1,250/wk residential (MAX €1,750); Full-day €625; Half-day €395. Mass-participation "experience" camp — accessible price, no recruiting pipeline.</li></ul></div>
+      <div class="card"><div class="eventname">AC Milan Junior Camp <span class="pill p-mid">Mid</span></div><div class="eventmeta">Italy (Sporteventi)</div>
+        <ul><li>€1,350–€1,510/wk residential (hotel FB, Puma/Milan kit, activities, transport, insurance); Day €1,085–€1,230.</li></ul></div>
+      <div class="card"><div class="eventname">Ertheo / Atlético Madrid <span class="pill p-mid">Upper-mid</span></div><div class="eventmeta">Palencia, Spain</div>
+        <ul><li>From €1,625/wk residential FB, official Atlético UEFA/RFEF coaches, 18+ hrs/wk, 2 kits, player report.</li></ul></div>
+    </div>
+
+    <h3 style="margin-top:20px">Independent high-performance &amp; US benchmarks</h3>
+    <div class="grid g2">
+      <div class="card"><div class="eventname">SIA Academy <span class="pill p-mid">Mid — value</span></div><div class="eventmeta">Enguera, Valencia</div>
+        <ul><li><strong>€995/wk</strong> residential FB (drops with length). 16 UEFA-Pro sessions/wk, video/nutrition/psych, 5 meals/day, 2 kits, 24/7 tutors. The price outlier — undercuts IDA by ~$800/wk.</li></ul></div>
+      <div class="card"><div class="eventname">Kaptiva / Marcet <span class="pill p-mid">Mid</span></div><div class="eventmeta">Barcelona</div>
+        <ul><li>Kaptiva ~€1,223–€1,495/wk (full board, 18 sessions/2wk, Camp Nou + PortAventura). Marcet ~$1,350/wk (dev tier), 30–35 hrs training, tiered by age.</li></ul></div>
+      <div class="card"><div class="eventname">IMG Academy <span class="pill p-prem">Premium (US)</span></div><div class="eventmeta">Bradenton, Florida</div>
+        <ul><li>~$4,349–$4,829/wk boarding (day ~$3,849+). Elite facility + boarding + meals + performance services — the US premium anchor.</li></ul></div>
+      <div class="card"><div class="eventname">Nike Soccer Camps (US) <span class="pill p-budget">Benchmark</span></div><div class="eventmeta">US universities</div>
+        <ul><li>~$449–$919/wk overnight — the US mass-market benchmark; campus housing + meals for overnight.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ===================== DELIVERABLES ===================== -->
+  <section id="deliverables" class="tab-content">
+    <h2>What the Camps Actually Deliver</h2>
+    <p class="sub">Beyond price, families are buying a bundle. Here's the deliverable set by dimension — and which camps are strong vs. thin on each. The dividing line is <strong>"experience" vs. "development" vs. "development + exposure."</strong></p>
+
+    <div class="grid g3" style="margin-bottom:20px">
+      <div class="card elev"><h3><span class="pill p-brand">Brand / experience</span></h3><ul>
+        <li><strong>Man City · Nike/Liverpool · Barça-BCN · Real Madrid · AC Milan.</strong> You pay for the crest, the elite facility, the stadium tour and a safe residential wrap. Real coaching, but little individual reporting and essentially <em>no</em> recruiting pipeline.</li></ul></div>
+      <div class="card elev"><h3><span class="pill p-method">Development / methodology</span></h3><ul>
+        <li><strong>Tovo · SIA · Kaptiva · Marcet.</strong> You buy the coaching pedagogy and volume (16–18 sessions/wk, ex-La Masia/UEFA-Pro staff). Strong development; lighter on excursions and formal exposure.</li></ul></div>
+      <div class="card elev"><h3 style="color:var(--you)"><span class="pill p-exp">Development + exposure</span></h3><ul>
+        <li><strong>IDA · Eture · FCV.</strong> Development <em>plus</em> a pathway — video/reels, matches vs academies, reports, and (IDA/Eture) direct routes to college/pro. This is IDA's lane.</li></ul></div>
+    </div>
+
+    <h3>Deliverables, dimension by dimension</h3>
+    <p class="scrollhint">↔ Scroll horizontally on mobile.</p>
+    <div class="matrix-scroll">
+      <table>
+        <thead><tr><th>Deliverable</th><th>What "standard" looks like</th><th>Strong on it</th><th>Thin / silent</th></tr></thead>
+        <tbody>
+          <tr><th>Sessions &amp; hours</th><td>1–2 sessions/day; 15–25 coaching hrs/wk</td><td>Nike/LFC (~24h), SIA (16), Eture &amp; FCV (double sessions)</td><td>Man City lower on-field (15h + 15h workshops)</td></tr>
+          <tr><th>Coaching credentials</th><td>UEFA licenses / pro-club or academy staff</td><td>Man City (club staff), Tovo (ex-La Masia), FCV/SIA (UEFA + ex-pros), Nike/LFC (LFC curriculum)</td><td>Generic day camps (unnamed staff)</td></tr>
+          <tr><th>Video &amp; player report</th><td>Match film + individual written feedback</td><td><strong>Eture (Veo reels)</strong>, FCV (match analysis), SIA (video), Ertheo (report)</td><td>Most club camps give none; Tovo only in higher tiers</td></tr>
+          <tr><th>Kit</th><td>Branded training kit</td><td>All majors (Puma/MCFC, LFC pack, Nike/IDA, FCV, Tovo, 2 kits at SIA/Ertheo)</td><td>—</td></tr>
+          <tr><th>Accommodation</th><td>Boarding school / residence / campus dorm / hotel</td><td>Nike/LFC (boarding school), Man City (residence), FCV (en-suite), IDA/SIA/Eture/Tovo (campus)</td><td>—</td></tr>
+          <tr><th>Meals</th><td>Full board (3/day)</td><td>All residential camps (SIA 5 meals/day)</td><td>Day camps: lunch only</td></tr>
+          <tr><th>Matches / tournament</th><td>Friendlies vs local teams or internal</td><td>Eture &amp; FCV (vs Spanish/English academies)</td><td>Man City / Nike-LFC lean internal</td></tr>
+          <tr><th>Excursions / cultural</th><td>Stadium tours, city trips, activities</td><td>FCV (5 PL stadiums), Man City (Etihad, Alton Towers), IDA/Eture (Valencia/Barcelona)</td><td>Tovo (training-focused)</td></tr>
+          <tr><th>Airport transfers</th><td>Included or paid add-on</td><td>IDA, Eture, Tovo (included/available)</td><td>Man City &amp; FCV (paid add-on)</td></tr>
+          <tr><th>Staff-to-player ratio</th><td>Rarely published</td><td>— (Man City caps ~60 campers)</td><td>All weak on transparency</td></tr>
+          <tr><th>Certificate</th><td>End-of-camp certificate</td><td>Man City, Tovo (explicit)</td><td>Others silent</td></tr>
+          <tr><th style="color:#34d399">College / pro exposure</th><td>Scouts, showcase, agents, highlight reels</td><td><strong>Eture (agency + NCAA + reels + scouts)</strong>; IDA (placement pathway); FCV (trials/network)</td><td>Man City, Nike/LFC, Tovo, Real Madrid — essentially none</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout good"><strong>Where IDA delivers well:</strong> all-inclusive bundle (meals, kit, transfers, excursions, language), development volume (1–2 sessions/day + S&C), <em>and</em> a college/pro pathway via its academy — the exposure deliverable most brand camps lack. <strong>Where to sharpen:</strong> make the exposure deliverable explicit like Eture — add/point to video reels, individual player reports, and a named placement track, and publish a staff-to-player ratio (nobody does — an easy trust win).</div>
   </section>
 
   <!-- ===================== PRICING ===================== -->
   <section id="pricing" class="tab-content">
     <h2>Pricing Analysis</h2>
-    <p class="sub">Per-week, 2026 published rates. Camps publish prices far more openly than the residency academies — including IDA's Prep Camps.</p>
+    <p class="sub">Per-week, 2026 published rates. Camps publish prices far more openly than the residency academies — including IDA's Prep Camps. UK prices in GBP (≈USD at ~1.27).</p>
 
     <div class="matrix-scroll">
       <table>
         <thead><tr><th>Camp</th><th>Price / week</th><th>Format</th><th>What's included</th><th>Data</th></tr></thead>
         <tbody>
+          <tr><th>IMG Academy</th><td>~$4,349–$4,829</td><td>Boarding / Day</td><td>Elite facility + boarding + meals + performance services</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Barça Academy — Barcelona</th><td>€2,395 · La Masia €4,195 · day €1,895</td><td>Residential / Day</td><td>La Masia/residence + 9 sessions + shirt + transfers</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Nike / Liverpool (UK)</th><td>£2,295 (~$2,900)</td><td>Residential</td><td>~24h coaching + LFC kit + full board + Anfield tour</td><td><span class="pill p-mid">Aggregator</span></td></tr>
+          <tr><th>Manchester City (UK)</th><td>£2,199 (~$2,780)</td><td>Residential</td><td>15h coaching + 15h workshops + full board + Etihad tour + kit</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Tovo Academy</th><td>~$2,100–$2,250</td><td>Residential</td><td>TIC methodology + ex-La Masia coaches + full board + transfers + kit</td><td><span class="pill p-mid">Team price public</span></td></tr>
           <tr class="you"><th>IDA Prep Camps</th><td><strong>$1,785 / €1,785</strong></td><td>Residential</td><td>Lodging + meals + 1–2 sessions/day + S&C + language + excursions + Nike kit + transfer</td><td><span class="pill p-you">Published</span></td></tr>
-          <tr><th>SIA Academy</th><td>€995</td><td>Residential FB</td><td>16 sessions/wk + 5 meals/day + video/nutrition + 2 kits + tutors</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Ertheo / Atlético</th><td>from €1,625</td><td>Residential FB</td><td>Official Atléti coaches + full board + 18+ hrs/wk + 2 kits + report</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Eture ID Camp</th><td>Not public (est. €1,500–€2,250)</td><td>Residential (2 wk)</td><td>Double sessions + Veo reels + Spanish classes + scouts/agents + full board</td><td><span class="pill p-they">Gated</span></td></tr>
+          <tr><th>AC Milan Junior Camp</th><td>€1,350–€1,510 (day €1,085–€1,230)</td><td>Residential (hotel FB)</td><td>Hotel FB + Puma/Milan kit + activities + transport</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>Marcet</th><td>~$1,350 (dev tier)</td><td>Residential</td><td>30–35 hrs training + full board (tiered by age)</td><td><span class="pill p-mid">Reseller</span></td></tr>
           <tr><th>Barça Academy — non-BCN</th><td>~€1,290</td><td>Residential</td><td>Sessions + lodging + kit</td><td><span class="pill p-mid">Published (net)</span></td></tr>
           <tr><th>Real Madrid Foundation</th><td>€1,250 · MAX €1,750</td><td>Residential</td><td>Lodging + program; day €625 / half-day €395</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>FCV Int'l Academy (UK)</th><td>~£1,250 (~$1,580)</td><td>Residential (2-wk blocks)</td><td>UEFA coaching + match analysis + matches + S&C/physio + full board + PL-stadium trips</td><td><span class="pill p-you">Published</span></td></tr>
           <tr><th>Kaptiva Sports</th><td>~€1,223–€1,495</td><td>Residential FB</td><td>18 sessions/2wk + meals + excursions + transfers + laundry</td><td><span class="pill p-you">Published</span></td></tr>
-          <tr><th>Marcet</th><td>~$1,350 (dev tier)</td><td>Residential</td><td>30–35 hrs training + full board (tiered by age)</td><td><span class="pill p-mid">Reseller</span></td></tr>
-          <tr><th>AC Milan Junior Camp</th><td>€1,350–€1,510</td><td>Residential (hotel FB)</td><td>Hotel FB + Puma/Milan kit + activities + transport; day €1,085–€1,230</td><td><span class="pill p-you">Published</span></td></tr>
-          <tr><th>Ertheo / Atlético Madrid</th><td>from €1,625</td><td>Residential FB</td><td>Official Atléti coaches + full board + 18+ hrs/wk + 2 kits + report</td><td><span class="pill p-you">Published</span></td></tr>
-          <tr><th>Barça Academy — Barcelona</th><td>€2,395 · La Masia €4,195 · day €1,895</td><td>Residential / Day</td><td>La Masia/residence + 9 sessions + shirt + transfers</td><td><span class="pill p-you">Published</span></td></tr>
-          <tr><th>IMG Academy</th><td>~$4,349–$4,829 (day ~$3,849+)</td><td>Boarding / Day</td><td>Elite facility + boarding + meals + performance services</td><td><span class="pill p-you">Published</span></td></tr>
+          <tr><th>SIA Academy</th><td>€995</td><td>Residential FB</td><td>16 sessions/wk + 5 meals/day + video/nutrition + 2 kits + tutors</td><td><span class="pill p-you">Published</span></td></tr>
           <tr><th>Nike Soccer Camps (US)</th><td>~$449–$919 overnight</td><td>Overnight / Day</td><td>Campus housing + meals (overnight)</td><td><span class="pill p-you">Published</span></td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout" style="margin-top:6px"><strong>Price bands (1-wk residential unless noted):</strong> <strong>Budget / day ~€395–€900</strong> (Real Madrid day/half-day; Nike US overnight). <strong>Mid residential ~€1,000–€1,600</strong> (SIA €995, Barça non-BCN €1,290, Real Madrid €1,250, Kaptiva ~€1,223–1,495, Marcet ~$1,350, AC Milan €1,350–1,510, Ertheo/Atléti €1,625). <strong>IDA Prep ~$1,785 = top of the mid band.</strong> <strong>Premium ~€1,900–€4,800</strong> (Barça-Barcelona €2,395–4,195, IMG $4,349–4,829).</div>
+    <div class="callout" style="margin-top:6px"><strong>Price bands (1-wk residential unless noted):</strong> <strong>Budget / day ~€395–€900</strong> (Real Madrid day; Nike US overnight). <strong>Mid residential ~€1,000–€1,650</strong> (SIA €995 → Ertheo €1,625, incl. FCV ~£1,250). <strong>IDA Prep ~$1,785 = top of the mid band.</strong> <strong>Premium ~$2,100–$4,800</strong> (Tovo ~$2,100–2,250, Man City/Nike-Liverpool ~£2,200–£2,300 ≈ $2,800–2,900, Barça-Barcelona €2,395–4,195, IMG $4,349–4,829).</div>
 
     <div class="grid g2" style="margin-top:6px">
       <div class="card elev"><h3>What the numbers say</h3><ul>
-        <li class="tie"><strong>IDA is priced at the top of the mid band (~$1,785).</strong> Above Real Madrid Foundation (€1,250), SIA (€995), AC Milan and Kaptiva; ~level with Real Madrid MAX (€1,750); below Barça-Barcelona and IMG.</li>
-        <li class="lose"><strong>SIA undercuts you by ~$800/wk (€995).</strong> A residential, full-board, 16-session camp for under €1,000 is the value threat — your bundle and pathway have to justify the gap.</li>
-        <li class="win"><strong>Pro-club "foundation" camps are cheaper than their brand suggests</strong> (Real Madrid €1,250, AC Milan €1,350) because they're mass-participation experiences — you compete on real development, not nostalgia.</li>
-        <li class="win"><strong>You already publish your price</strong> (Prep Camps) — an advantage over the quote-only residency market; extend that clarity to the other camp lines.</li>
+        <li class="tie"><strong>IDA (~$1,785) sits just below the premium tier.</strong> The UK club camps (Man City £2,199, Nike/Liverpool £2,295) and Tovo (~$2,150) are ~$1,000/wk more — for the badge/method, not more exposure.</li>
+        <li class="lose"><strong>SIA still undercuts you by ~$800/wk (€995)</strong> and FCV (~£1,250) sits below you too — value pressure from below.</li>
+        <li class="win"><strong>On the exposure axis you're premium-justified.</strong> Eture (your closest pathway rival) gates its price; you publish yours and bundle more.</li>
       </ul></div>
       <div class="card elev"><h3>Pricing / go-to-market moves</h3><ul>
-        <li class="win"><strong>Justify the premium over SIA/Kaptiva</strong> — lead with the all-inclusive bundle (kit, transfers, excursions, language) + placement pathway + US↔Europe choice.</li>
-        <li class="win"><strong>Add a day-camp or entry tier</strong> (like Real Madrid's €395–€625) to capture price-sensitive/local families and feed the funnel.</li>
-        <li class="win"><strong>Use camps as the top of the funnel</strong> into IDA's residency academy and placement services — the camp is a paid trial.</li>
-        <li class="win"><strong>Anchor against Barça-Barcelona/IMG</strong> — "elite development + real pathway at less than half the flagship price."</li>
+        <li class="win"><strong>Sell the exposure deliverable</strong> (reels, reports, placement) to defend the premium over SIA/FCV and justify parity with the brand camps.</li>
+        <li class="win"><strong>Add a day-camp / entry tier</strong> (vs. Real Madrid €395–625) to widen the funnel and capture price-sensitive families.</li>
+        <li class="win"><strong>Contrast with the UK club camps</strong> — "real development + a college/pro pathway for ~$1,000/wk less than a crest and a stadium tour."</li>
+        <li class="win"><strong>Use camps as the paid trial</strong> into IDA's residency academy + placement services.</li>
       </ul></div>
     </div>
 
-    <div class="callout warn" style="margin-top:16px"><strong>Data caveat:</strong> Prices are 2026 published per-week rates; Marcet is via a reseller and IDA's non-Prep camps are quote-only (estimates). Barça Barcelona &amp; Kaptiva 2026 are largely sold out (rates still shown). EUR/USD treated as ~parity. Verify current rates before external use.</div>
+    <div class="callout warn" style="margin-top:16px"><strong>Data caveat:</strong> 2026 published per-week rates; UK GBP≈USD at ~1.27. Nike/Liverpool price is aggregator-sourced; Eture ID camp and Tovo individual-week prices are gated/estimated; Marcet via reseller; IDA non-Prep camps quote-only. Verify before external use.</div>
   </section>
 
   <!-- ===================== STRATEGY ===================== -->
@@ -239,47 +310,51 @@
     <p class="sub">Where IDA's camps stand and how to grow the line.</p>
 
     <div class="card elev" style="margin-bottom:16px"><h3>Positioning in one line</h3><ul>
-      <li class="win"><strong>IDA camps are a top-of-mid-band, all-inclusive, pathway-linked product</strong> — priced above the pro-club foundation camps and independents like SIA, but below the Barça-Barcelona/IMG premium. The pitch is development + placement, not brand nostalgia.</li>
+      <li class="win"><strong>IDA camps are a top-of-mid-band, all-inclusive, "development + exposure" product</strong> — priced below the brand/facility premium (IMG, Barça-BCN, Man City, Nike/Liverpool, Tovo) and above the mid-market field, competing on a real pathway rather than a crest.</li>
     </ul></div>
 
     <div class="grid g2">
       <div class="card elev"><h3 style="color:var(--you)">Where you win / can press</h3><ul>
-        <li class="win"><strong>Real pathway, not a brand day-out.</strong> Foundation camps (Real Madrid, AC Milan) sell an experience; IDA sells development + a college/pro route. Make that the headline.</li>
-        <li class="win"><strong>All-inclusive clarity.</strong> Your $1,785 already bundles kit, meals, transfers, excursions, language — market the "no hidden extras" value vs. cheaper base prices that add on.</li>
-        <li class="win"><strong>US + Europe optionality</strong> (Valencia + Daytona) — few competitors offer both sides of the Atlantic.</li>
-        <li class="win"><strong>Camp → academy funnel.</strong> Use camps as a paid trial that converts into residency + placement revenue.</li>
+        <li class="win"><strong>Pathway, not nostalgia.</strong> The UK club camps (Man City, Liverpool) and Barça/Real Madrid sell the crest; you sell development + college/pro exposure at ~$1,000/wk less.</li>
+        <li class="win"><strong>All-inclusive clarity + published price</strong> vs. gated (Eture) or add-on-heavy (club camps) pricing.</li>
+        <li class="win"><strong>US + Europe optionality</strong> (Valencia + Daytona) — unusual in this field.</li>
+        <li class="win"><strong>Camp → academy funnel</strong> — a paid trial that converts into residency + placement revenue.</li>
       </ul></div>
       <div class="card elev"><h3 style="color:var(--they)">Risks / gaps to close</h3><ul>
-        <li class="lose"><strong>SIA's €995 undercut</strong> — a full-board, high-session camp for less than €1,000 pressures your price on value-shoppers.</li>
-        <li class="lose"><strong>Brand halo</strong> of Barça/Real Madrid/AC Milan pulls families on name at similar or lower prices.</li>
-        <li class="lose"><strong>No published entry/day tier</strong> — you cede the price-sensitive and local-family segment.</li>
-        <li class="lose"><strong>Only Prep Camps publish pricing</strong> — the elite lines are invisible until a sales conversation.</li>
+        <li class="lose"><strong>Value pressure from below</strong> — SIA (€995) and FCV (~£1,250) undercut you.</li>
+        <li class="lose"><strong>Brand halo</strong> of Man City / Liverpool / Barça / Real Madrid pulls families on name.</li>
+        <li class="lose"><strong>Eture out-delivers on exposure specifics</strong> (Veo reels, NCAA scouts) — you need to match/publicize that.</li>
+        <li class="lose"><strong>No published day/entry tier</strong> and no staff-ratio transparency (nobody publishes one — an easy differentiator).</li>
       </ul></div>
     </div>
 
     <div class="card" style="margin-top:16px"><h3>Recommended next actions</h3><ul>
-      <li class="win"><strong>Sharpen the value story vs. SIA/Kaptiva</strong> — quantify what's bundled so the ~$800 premium over SIA is obvious and defensible.</li>
-      <li class="win"><strong>Launch a day-camp / entry tier</strong> to compete with Real Madrid's €395–€625 and widen the funnel.</li>
-      <li class="win"><strong>Engineer the camp→residency→placement funnel</strong> with clear upsell offers and conversion tracking.</li>
-      <li class="win"><strong>Publish pricing for the elite camp lines</strong> (or "from" figures) to enter comparison shortlists.</li>
-      <li class="win"><strong>Position against Barça-Barcelona/IMG</strong> on value — elite development + pathway at &lt; half the flagship price.</li>
+      <li class="win"><strong>Productize the exposure deliverable</strong> — Veo-style match reels, individual player reports, and a named college/pro placement track — and put it on the camp page to beat Eture at its own game.</li>
+      <li class="win"><strong>Publish a staff-to-player ratio</strong> — no competitor does; it's a cheap, concrete trust signal.</li>
+      <li class="win"><strong>Sharpen the value story vs. SIA/FCV</strong> — quantify the bundle so the premium is obvious.</li>
+      <li class="win"><strong>Launch a day-camp / entry tier</strong> to widen the funnel (vs. Real Madrid €395–625).</li>
+      <li class="win"><strong>Run the "crest vs. pathway" comparison</strong> in marketing against Man City/Liverpool.</li>
       <li class="win"><strong>Refresh annually</strong> before each summer-camp booking cycle.</li>
     </ul></div>
 
-    <div class="callout warn" style="margin-top:16px"><strong>Data caveat:</strong> Compiled from public sources (July 2026). Competitor camp prices are 2026 published rates (Marcet via reseller); IDA's non-Prep camps are quote-only estimates. Verify before external/investor use.</div>
+    <div class="callout warn" style="margin-top:16px"><strong>Data caveat:</strong> Compiled from public sources (July 2026). Competitor camp prices are 2026 published rates (Nike/Liverpool aggregator; Marcet reseller); Eture ID camp &amp; Tovo individual weeks are gated/estimated; IDA non-Prep camps quote-only. Verify before external/investor use.</div>
   </section>
 
   <footer>
     <strong>Sources:</strong>
     <a href="https://internationalda.com/prep-camps/">IDA Prep Camps</a> ·
-    <a href="https://barcaacademy.fcbarcelona.com/">Barça Academy Camp</a> ·
+    <a href="https://barcaacademy.fcbarcelona.com/">Barça Academy</a> ·
     <a href="https://www.campusexperiencermf.com/">Real Madrid Foundation</a> ·
     <a href="https://kaptivasportsacademy.com/">Kaptiva</a> ·
-    <a href="https://soccerinteraction.com/">SIA Academy</a> ·
+    <a href="https://soccerinteraction.com/">SIA</a> ·
     <a href="https://marcetfootball.com/">Marcet</a> ·
     <a href="https://ertheo.com/">Ertheo / Atlético</a> ·
-    <a href="https://www.sporteventi.com/">AC Milan Junior Camp</a> ·
-    <a href="https://www.ussportscamps.com/soccer/nike">Nike Soccer Camps</a> ·
+    <a href="https://www.sporteventi.com/">AC Milan</a> ·
+    <a href="https://tovoacademy.com/">Tovo Academy</a> ·
+    <a href="https://eturesports.com/programs/summercamp">Eture ID Camp</a> ·
+    <a href="https://www.mancity.com/">Manchester City</a> ·
+    <a href="https://www.ussportscamps.com/">Nike / Liverpool</a> ·
+    <a href="https://internationalfootball.academy/">FCV</a> ·
     <a href="https://www.imgacademy.com/">IMG Academy</a>
     <div class="disclaimer">Compiled from public web sources on July 2, 2026 for internal strategic planning. Prices are 2026 published per-week rates unless flagged. Refresh annually.</div>
   </footer>
